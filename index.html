@@ -1,23 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "장기렌트카와 할부 구매 중 어떤 것을 선택해야 할까요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "장기렌트카는 초기 비용 부담이 적고, 세금, 보험료, 차량 관리(정비)에 대한 부담이 없다는 장점이 있습니다. 반면, 할부 구매는 최종적으로 차량 소유권이 본인에게 있으며, 중도 해지 시 위약금이 없다는 차이점이 있습니다. 운전 습관, 재정 상황, 차량 교체 주기 등을 고려하여 선택해야 합니다. 일반적으로 차량 교체 주기가 짧거나 사업자에게 유리하며, 보험 경력이 중요하거나 주행 거리가 매우 짧은 개인에게는 할부 구매가 유리할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "장기렌트 업체별 견적 차이가 발생하는 이유는 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "업체별 견적 차이는 크게 '차량 할인율', '금리(할인율)', '잔존가치 설정', '유지보수 서비스 범위', '보험료' 등에서 발생합니다. 특히 대규모 렌터카 업체는 대량 구매를 통해 차량을 더 싸게 가져올 수 있어 견적 경쟁력을 갖추며, 자체적으로 진행하는 프로모션이나 '사은품', '현금지원' 등도 견적에 영향을 미칩니다. 장기렌트 견적 비교 사이트를 통해 여러 업체의 견적을 동시에 받아보는 것이 가장 정확합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "장기렌트 계약 시 '현금지원'이나 '사은품'을 받는 것이 무조건 좋은가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "현금지원이나 사은품은 일종의 마케팅 전략일 수 있으며, 지원금을 받는 대신 월 렌탈료가 높아질 수 있습니다. 총 계약 기간 동안의 총 비용을 비교해보는 것이 중요합니다. 단순히 눈에 보이는 지원금만 보고 계약하는 것보다, 전체 견적 금액을 확인하여 '저렴한곳'을 찾는 것이 현명한 선택입니다. 특히 신규 가입 혜택이나 이벤트는 특정 모델에 한정되는 경우가 많으므로 꼼꼼한 확인이 필요합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* 기본 레이아웃 및 폰트 설정 */
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f2f8f5; color: #333; margin: 0; padding: 0; line-height: 1.6; }
+        .wrapper { max-width: 900px; margin: 30px auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2.4em; color: #1e88e5; margin-bottom: 0.8em; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
+        h2 { font-size: 1.8em; color: #00bcd4; margin-top: 2em; margin-bottom: 0.8em; }
+        h3 { font-size: 1.4em; color: #2e7d32; margin-top: 1.5em; margin-bottom: 0.6em; }
+        p { margin-bottom: 1em; }
+        .highlight { font-weight: bold; color: #d32f2f; }
+        
+        /* 테이블 스타일 */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 1.5em; }
+        .comparison-table th, .comparison-table td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; vertical-align: top; }
+        .comparison-table th { background-color: #e3f2fd; color: #1e88e5; font-weight: bold; }
+        .comparison-table tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        /* 폼 스타일 */
+        .input-form { margin: 2em 0; padding: 2em; background: #e0f7fa; border-radius: 10px; border: 1px solid #b2ebf2; }
+        .input-form label { display: block; margin-bottom: 0.5em; font-weight: 600; color: #00796b; }
+        .input-form input, .input-form select, .input-form textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 1.5em; border: 1px solid #b0bec5; border-radius: 5px; box-sizing: border-box; }
+        .input-form button { padding: 1em 2em; background-color: #00bcd4; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; transition: background-color 0.3s ease; }
+        .input-form button:hover { background-color: #0097a7; }
+        #calcResult { font-size: 1.5em; color: #d32f2f; margin-top: 1.5em; font-weight: bold; text-align: center; background: #fffde7; padding: 1em; border-radius: 8px; }
+        
+        /* 이미지 및 그래프 컨테이너 */
+        .media-container { margin-top: 2em; text-align: center; }
+        .media-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        .chart-container { width: 100%; height: 300px; background-color: #eceff1; border-radius: 8px; margin-top: 1.5em; position: relative; display: flex; align-items: center; justify-content: center; color: #78909c; }
+        
+        /* FAQ 섹션 */
+        .faq { margin-top: 2em; }
+        .faq-item { margin-bottom: 1.5em; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; background: #fafafa; }
+        .faq-item h3 { cursor: pointer; color: #00bcd4; margin: 0; padding: 0; display: flex; align-items: center; }
+        .faq-item h3::before { content: "+"; margin-right: 10px; font-weight: bold; color: #00bcd4; }
+        .faq-item p { margin-top: 10px; padding-left: 20px; display: none; }
+        .faq-item.active h3::before { content: "-"; }
+        .faq-item.active p { display: block; }
+        
+        /* 외부 링크 및 결론 스타일 */
+        .external-links ul { list-style: none; padding-left: 0; }
+        .external-links li { margin-bottom: 0.8em; }
+        .external-links a { color: #1e88e5; text-decoration: none; font-weight: bold; }
+        .external-links a:hover { text-decoration: underline; }
+        .testimonial { margin-top: 2em; background: #e8f5e9; padding: 1.5em; border-left: 5px solid #43a047; border-radius: 8px; }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 메인 제목 -->
+        <h1>장기렌트 업체 추천: 2026년 최저가 견적 비교 및 현명한 선택 가이드</h1>
+        <p>새 차를 구매하는 대신 장기렌트카를 고려하는 분들이 늘어나고 있습니다. 2026년 현재, 장기렌트 시장은 <span class="highlight">경쟁 심화로 인해 다양한 조건과 할인 혜택이 쏟아져 나오고 있습니다.</span> 하지만 복잡한 견적 조건과 수많은 업체(롯데렌터카, SK렌터카, 현대캐피탈, KB캐피탈 등) 사이에서 '어떤 업체가 가장 저렴한지', '나에게 맞는 차량은 무엇인지' 판단하기 쉽지 않습니다. 이 가이드는 복잡한 장기렌트의 장점과 단점, 그리고 2026년 최신 견적 비교를 통해 현명한 선택을 돕기 위해 작성되었습니다.</p>
+        <p>특히 '장기렌트업체추천' 키워드를 검색하는 분들이 가장 궁금해하는 <span class="highlight">월 비용, 보증금 조건, 차량 유지보수 범위, 그리고 사은품 및 현금지원 혜택</span> 등을 중심으로 상세하게 분석했습니다. 지금 바로 내 상황에 맞는 예상 견적을 계산해보세요.</p>
+
+        <!-- 비용 계산 입력폼 (Long-term Rental Calculator) -->
+        <div class="input-form">
+            <h2>나에게 맞는 장기렌트 견적 예상하기</h2>
+            <p>간단한 정보 입력으로 2026년 기준 예상 월 렌탈료를 계산해보고, 나에게 맞는 <span class="highlight">최저가 견적</span>을 찾아보세요.</p>
+            <label for="carModel">원하는 차량 모델 선택</label>
+            <select id="carModel" name="carModel" required>
+                <option value="sonata">현대 쏘나타 (중형 세단)</option>
+                <option value="k5">기아 K5 (중형 세단)</option>
+                <option value="grandeur">현대 그랜저 (준대형 세단)</option>
+                <option value="k8">기아 K8 (준대형 세단)</option>
+                <option value="g80">제네시스 G80 (럭셔리 세단)</option>
+                <option value="santafe">현대 싼타페 (중형 SUV)</option>
+                <option value="sorento">기아 쏘렌토 (중형 SUV)</option>
+                <option value="palisade">현대 팰리세이드 (대형 SUV)</option>
+                <option value="carnival">기아 카니발 (미니밴)</option>
+                <option value="ionic5">현대 아이오닉 5 (전기차)</option>
+                <option value="ev6">기아 EV6 (전기차)</option>
+                <option value="modelY">테슬라 모델 Y (전기차)</option>
+                <option value="ray">기아 레이 (경차)</option>
+                <option value="morning">기아 모닝 (경차)</option>
+            </select>
+
+            <label for="rentalPeriod">계약 기간 (개월)</label>
+            <select id="rentalPeriod" name="rentalPeriod" required>
+                <option value="36">36개월</option>
+                <option value="48">48개월</option>
+                <option value="60">60개월</option>
+            </select>
+
+            <label for="depositType">보증금/선납금 여부</label>
+            <select id="depositType" name="depositType" required>
+                <option value="none">보증금/선납금 없음</option>
+                <option value="deposit10">보증금 10%</option>
+                <option value="deposit20">보증금 20%</option>
+                <option value="prepayment10">선납금 10%</option>
+                <option value="prepayment20">선납금 20%</option>
+            </select>
+
+            <label for="annualMileage">연간 주행거리 (km)</label>
+            <select id="annualMileage" name="annualMileage" required>
+                <option value="10000">10,000 km (가장 저렴한 조건)</option>
+                <option value="20000">20,000 km (평균 주행거리)</option>
+                <option value="30000">30,000 km (장거리 운행)</option>
+                <option value="무제한">무제한 (특정 업체 옵션)</option>
+            </select>
+
+            <button type="button" onclick="calculateRentalCost()">예상 견적 계산하기</button>
+            <p id="calcResult" style="font-size:1.2em; color:#d45d79; margin-top:1em;"></p>
+        </div>
+
+        <!-- 주요 업체별 비교 (Comparison Table) -->
+        <h2>2026년 장기렌트 업체별 비교 분석: 롯데렌터카 vs SK렌터카 vs 현대캐피탈</h2>
+        <p>장기렌트 시장은 크게 <span class="highlight">메이저 렌터카 업체(롯데, SK)</span>와 <span class="highlight">캐피탈사(현대, KB)</span>로 양분됩니다. 각 업체는 견적 산정 방식, 서비스 범위, 프로모션 등에서 뚜렷한 차이를 보입니다. '저렴한곳'을 찾기 위해서는 단순히 월 납입액만 볼 것이 아니라, 총 비용과 서비스 품질을 함께 고려해야 합니다.</p>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>업체 구분</th>
+                    <th>주요 특징</th>
+                    <th>장점</th>
+                    <th>단점</th>
+                    <th>추천 대상</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>롯데렌터카 (신차장)</strong></td>
+                    <td>업계 1위의 인프라와 다양한 모델 보유.</td>
+                    <td>대량 구매로 인한 가격 경쟁력, 전국 정비망, '만기 인수' 조건 유리.</td>
+                    <td>초기 견적 외 추가 서비스 비용 발생 가능성.</td>
+                    <td>장거리 주행 및 정기적인 관리를 원하는 개인/사업자.</td>
+                </tr>
+                <tr>
+                    <td><strong>SK렌터카</strong></td>
+                    <td>SK 주유/멤버십 혜택, 전기차 인프라 강점.</td>
+                    <td>LPG 차량 및 전기차 모델 견적 유리, 멤버십 할인 혜택.</td>
+                    <td>특정 모델의 '사은품'이나 '현금지원'이 상대적으로 적을 수 있음.</td>
+                    <td>SK 멤버십을 이용하는 개인, 전기차 장기렌트를 원하는 고객.</td>
+                </tr>
+                <tr>
+                    <td><strong>현대캐피탈</strong></td>
+                    <td>현대/기아차 제조사 연계 할인 강점.</td>
+                    <td>현대/기아차 모델 최적 견적 제시, 신용 조건에 따른 유연한 계약.</td>
+                    <td>렌터카 전문 업체 대비 정비 서비스 옵션이 제한적일 수 있음.</td>
+                    <td>현대/기아차 특정 모델을 선호하는 고객.</td>
+                </tr>
+                <tr>
+                    <td><strong>KB캐피탈</strong></td>
+                    <td>금융사 기반의 견적 조건 유연성.</td>
+                    <td>신용 조건에 따른 맞춤형 설계 가능, 다양한 제휴 상품.</td>
+                    <td>렌터카 업체 대비 '할인율'이 낮을 수 있음.</td>
+                    <td>신용도가 높거나 특정 금융 상품과 연계하려는 고객.</td>
+                </tr>
+                <tr>
+                    <td><strong>AJ셀카 (AJ렌터카)</strong></td>
+                    <td>중고차 렌트 및 다양한 서비스 상품.</td>
+                    <td>중고차 장기렌트 옵션 제공, 만기 시 인수/반납 유연성.</td>
+                    <td>신차 장기렌트 견적 경쟁력은 다소 낮을 수 있음.</td>
+                    <td>비용 절약을 위해 중고차 렌트를 고려하는 고객.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>※ 참고: 위 비교는 2026년 상반기 시장 동향을 바탕으로 작성되었으며, 각 업체의 프로모션 및 '할인' 조건은 수시로 변동됩니다. 견적 비교 시 반드시 현재 진행 중인 이벤트와 '사은품' 및 '현금지원' 조건을 확인해야 합니다.</p>
+
+        <!-- 핵심 키워드 심층 분석: 장기렌트 vs 할부 vs 리스 -->
+        <h2>장기렌트, 할부, 리스: 나에게 맞는 차량 구매(이용) 방식은?</h2>
+        <p>차량 이용 방식을 결정하는 것은 장기렌트 견적을 알아보는 것만큼이나 중요합니다. 특히 '장단점'을 명확히 이해해야 후회 없는 선택을 할 수 있습니다. 아래에서 2026년 기준 주요 차량 이용 방식의 장점과 단점, 그리고 '차이점'을 상세히 비교해드립니다.</p>
+        <div class="comparison-table">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>장기렌트 (신차)</th>
+                    <th>자동차 할부 구매 (신차)</th>
+                    <th>운용 리스 (신차)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>초기 비용</strong></td>
+                    <td>보증금/선납금 선택 가능 (무보증금 가능). 초기 비용 부담 낮음.</td>
+                    <td>취득세, 등록세, 보험료 등 초기 목돈 필요.</td>
+                    <td>보증금/선납금 선택 가능. 초기 비용 부담 중간.</td>
+                </tr>
+                <tr>
+                    <td><strong>월 납입금 구성</strong></td>
+                    <td>차량가, 보험료, 세금, 유지보수비가 모두 포함된 통합 비용.</td>
+                    <td>원금+이자. 세금/보험료 별도 납부.</td>
+                    <td>차량가, 이자, 세금 포함. 보험료 별도.</td>
+                </tr>
+                <tr>
+                    <td><strong>보험 처리</strong></td>
+                    <td>렌터카 업체 보험 적용 (개인 보험 경력 단절).</td>
+                    <td>개인 보험 가입 (보험 경력 유지).</td>
+                    <td>개인 보험 가입 (보험 경력 유지).</td>
+                </tr>
+                <tr>
+                    <td><strong>차량 번호판</strong></td>
+                    <td>'하', '호', '허' 번호판 사용.</td>
+                    <td>일반 번호판 사용.</td>
+                    <td>일반 번호판 사용.</td>
+                </tr>
+                <tr>
+                    <td><strong>세금 혜택</strong></td>
+                    <td>사업자 비용처리 용이 (전액 손금 인정).</td>
+                    <td>감가상각비/이자 비용처리 (한도 제한).</td>
+                    <td>사업자 비용처리 용이 (리스료 손금 인정).</td>
+                </tr>
+                <tr>
+                    <td><strong>계약 만기 시</strong></td>
+                    <td>차량 반납, 인수, 재렌트 선택.</td>
+                    <td>자동으로 차량 소유권 획득.</td>
+                    <td>차량 반납, 인수, 재리스 선택.</td>
+                </tr>
+            </tbody>
+        </div>
+        <p>일반적으로 사업자는 비용처리 혜택이 큰 장기렌트나 리스를 선호하며, 그중에서도 장기렌트가 초기 비용 및 보험/정비 관리가 편리해 '전문' 업체들이 '추천'하는 방식입니다. 개인의 경우 보험 경력 유지를 중요하게 생각한다면 리스가, 초기 비용 부담이 싫다면 장기렌트가 유리합니다.</p>
+
+        <!-- 인기 모델별 견적 분석 및 비교 -->
+        <h2>인기 모델별 2026년 장기렌트 견적 비교 (모델명 키워드 집중)</h2>
+        <p>장기렌트 견적은 업체별로 다르지만, 특히 <span class="highlight">차량 모델의 인기도와 할인율</span>에 따라 크게 달라집니다. 2026년 상반기 기준, 가장 많은 '가입' 문의가 들어오는 인기 모델들의 평균 견적을 분석하고 '저렴한곳'을 찾는 팁을 알려드립니다.</p>
+
+        <h3>1. 제네시스 G80, GV70, GV80 (럭셔리 SUV/세단) 견적 분석</h3>
+        <p>제네시스 라인업은 럭셔리 브랜드답게 높은 차량가로 인해 초기 비용 부담이 큰 모델입니다. 따라서 '장기렌트'를 통해 초기 비용을 낮추고, 월 렌탈료로 모든 비용을 처리하는 방식이 인기가 높습니다. 특히 <span class="highlight">G80</span> 모델은 세단 시장에서, <span class="highlight">GV70</span>과 <span class="highlight">GV80</span>은 SUV 시장에서 높은 수요를 보이며, 업체별 '할인' 경쟁이 치열한 모델입니다. 견적을 비교할 때 '잔존가치' 설정이 중요하며, 만기 인수를 염두에 둔다면 현대캐피탈이나 롯데렌터카의 견적을 꼼꼼히 살펴보는 것이 좋습니다. '평균' 월 렌탈료는 보증금 조건에 따라 달라지지만, 48개월 계약 시 70만원~100만원 '예상' 견적이 많습니다.</p>
+
+        <h3>2. 쏘렌토, 싼타페, 팰리세이드 (패밀리 SUV) 견적 분석</h3>
+        <p>국민 SUV라 불리는 <span class="highlight">쏘렌토</span>와 <span class="highlight">싼타페</span>, 그리고 대형 SUV <span class="highlight">팰리세이드</span>는 가족 단위 고객에게 가장 '추천'되는 모델입니다. 짐이 많거나 레저 활동을 즐기는 고객이 많아 '연간 주행거리' 옵션을 20,000km 이상으로 설정하는 경우가 많습니다. SUV 모델은 세단보다 '감가상각'이 적어 잔존가치 설정이 높게 책정될 수 있으며, 이는 월 렌탈료를 낮추는 요인이 됩니다. 기아차의 쏘렌토와 현대차의 싼타페는 '경쟁' 모델인 만큼 '저렴한곳'을 찾기 위해 양사 모델의 견적을 반드시 비교해봐야 합니다. 특히 <span class="highlight">팰리세이드</span>와 <span class="highlight">카니발</span>은 '장기렌트' 시장에서 꾸준한 인기를 끌고 있습니다.</p>
+
+        <h3>3. 그랜저, K8 (준대형 세단) 및 K5, 쏘나타 (중형 세단) 견적 분석</h3>
+        <p>중대형 세단 시장의 <span class="highlight">그랜저</span>와 <span class="highlight">K8</span>은 장기렌트의 전통적인 강자입니다. 과거에는 '법인 차량'의 상징이었으나, 최근에는 개인 사업자와 일반 개인 고객에게도 높은 인기를 얻고 있습니다. 중형 세단인 <span class="highlight">K5</span>와 <span class="highlight">쏘나타</span>는 사회 초년생이나 경제적인 차량을 찾는 고객에게 '추천'됩니다. 이들 모델은 '가성비'가 뛰어나며, 다양한 업체에서 '이벤트'나 '할인' 프로모션을 자주 진행합니다. '신규 가입' 혜택을 잘 활용하면 월 렌탈료를 크게 절약할 수 있습니다. <span class="highlight">아반떼</span>나 <span class="highlight">셀토스</span> 같은 엔트리 모델 역시 인기가 높으며, 롯데렌터카나 SK렌터카의 특가 상품을 노려볼 만합니다.</p>
+
+        <h3>4. 아이오닉 5, EV6, 테슬라 모델 Y (전기차) 견적 분석</h3>
+        <p>2026년 전기차 시장은 빠르게 성장하고 있습니다. <span class="highlight">아이오닉 5</span>와 <span class="highlight">EV6</span>, 그리고 <span class="highlight">테슬라 모델 Y</span>는 장기렌트 시장에서도 높은 인기를 자랑합니다. 전기차는 '보조금' 변동에 따라 견적이 수시로 달라지므로, '할인' 프로모션 시기를 잘 노려야 합니다. 특히 전기차는 유류비가 들지 않는다는 장점이 있지만, 충전 인프라와 배터리 관리에 대한 '장단점'을 충분히 고려해야 합니다. 일부 업체는 전기차에 대한 '현금지원'이나 '사은품'을 강화하여 고객 유치에 나서고 있습니다. 테슬라 모델 Y의 경우, 수입차 특성상 국내 업체보다 금융사 견적이 유리할 수 있습니다.</p>
+
+        <!-- 비용 절약을 위한 팁 및 주의사항 -->
+        <h2>비용 절약을 위한 현명한 장기렌트 팁 (feat. 2026년)</h2>
+        <p>장기렌트 계약 시 무조건 '싼곳'을 찾기보다, 나에게 필요한 서비스와 조건을 파악하여 총비용을 절약하는 것이 중요합니다. 다음은 2026년 장기렌트 시장에서 비용을 절약할 수 있는 실질적인 팁들입니다.</p>
+        <ul>
+            <li><strong>계약 기간 선택의 중요성:</strong> 렌탈 기간이 길수록 월 렌탈료가 낮아집니다. 48개월이나 60개월 계약이 36개월보다 저렴한 '평균'을 보입니다. 단, 중도 해지 시 위약금을 고려하여 신중하게 선택해야 합니다.</li>
+            <li><strong>초기 비용 설정 (보증금 vs 선납금):</strong> <span class="highlight">보증금</span>은 만기 시 돌려받는 금액이고, <span class="highlight">선납금</span>은 월 렌탈료를 미리 내는 방식입니다. 초기 비용에 여유가 있다면 보증금 20%를 넣는 것이 월 렌탈료를 낮추는 데 가장 효과적입니다.</li>
+            <li><strong>잔존가치 설정:</strong> 만기 시 '인수'를 원한다면 잔존가치를 낮게 설정하는 것이 유리하고, '반납'을 원한다면 잔존가치를 높게 설정하여 월 렌탈료를 낮추는 것이 유리합니다.</li>
+            <li><strong>비수기 프로모션 활용:</strong> 자동차 모델 변경이나 연말·연초 등의 비수기 시즌에 업체별 '할인' 이벤트나 '현금지원' 프로모션이 집중됩니다. 이때를 노리면 '신규 가입' 혜택을 극대화할 수 있습니다.</li>
+            <li><strong>보험 조건 확인 (면책금):</strong> 렌터카 보험 조건에서 사고 시 본인 부담금(면책금)을 확인해야 합니다. 면책금을 높게 설정하면 월 렌탈료가 소폭 낮아지지만, 사고 발생 시 부담이 커집니다.</li>
+            <li><strong>중고 장기렌트 고려:</strong> 새 차가 아니더라도 괜찮다면, '중고' 장기렌트를 이용하면 월 렌탈료를 크게 절약할 수 있습니다. 롯데렌터카의 중고차 전문 브랜드 등을 활용해보세요.</li>
+        </ul>
+
+        <!-- 함께 많이 찾는 키워드 (Related Keywords) -->
+        <h2>함께 많이 찾는 키워드 및 검색 의도 분석</h2>
+        <p>장기렌트 관련 검색 시 <span class="highlight">네이버, 구글, 유튜브, 디시인사이드</span> 등 다양한 플랫폼에서 '장기렌트업체추천' 외에도 다양한 연관 검색어들이 함께 나타납니다. 이러한 키워드들은 사용자들의 구체적인 고민을 반영합니다.</p>
+        <ul>
+            <li><strong>가격 및 혜택 관련 키워드:</strong> 장기렌트 싼곳, 장기렌트 저렴한곳, 장기렌트 가격 비교, 장기렌트 견적비교, 장기렌트 현금지원, 장기렌트 사은품, 장기렌트 할인율, 장기렌트 월납입금, 장기렌트 보증금 없는 곳.</li>
+            <li><strong>업체 및 모델 관련 키워드:</strong> 롯데렌터카 장기렌트, SK렌터카 장기렌트, 현대캐피탈 장기렌트, 제네시스 G80 장기렌트 가격, 쏘렌토 장기렌트 견적, 카니발 장기렌트, 테슬라 장기렌트.</li>
+            <li><strong>조건 및 후기 관련 키워드:</strong> 장기렌트 장단점, 장기렌트 후기, 장기렌트 내돈내산, 장기렌트 만기 인수 조건, 장기렌트 중도 해지 위약금, 장기렌트 신용등급, 장기렌트 보험.</li>
+            <li><strong>AI/정보 검색 키워드:</strong> 제미나이 장기렌트, ChatGPT 장기렌트 정보, AI 장기렌트 추천, 네이버 카페 장기렌트.</li>
+        </ul>
+        <div class="media-container">
+            <!-- Pexels 이미지 링크 예시 (상업적 사용 가능) -->
+            <img src="https://images.pexels.com/photos/1035108/pexels-photo-1035108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="장기렌트 계약서와 차량 키">
+            <p style="text-align: center; color: #78909c;">Pexels 이미지 출처: 장기렌트 계약 서류 및 차량 키</p>
+        </div>
+
+        <!-- FAQ 섹션 -->
+        <div class="faq">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-item">
+                <h3>장기렌트카 보험 가입 시 경력 단절이 되나요?</h3>
+                <p>네, 장기렌트카 계약은 렌터카 업체 명의로 보험이 가입되므로 개인 운전 경력이 단절됩니다. 계약 기간 동안 무사고 운전을 해도 보험료 할인 혜택을 받을 수 없습니다. 만약 보험 경력이 중요하다면 운용 리스를 고려하거나, 만기 인수 후 다시 개인 보험을 가입해야 합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>사고 발생 시 면책금 제도는 무엇인가요?</h3>
+                <p>장기렌트카는 사고 발생 시 보험 처리와 별개로 고객이 부담해야 하는 일정 금액(면책금)이 있습니다. 업체별로 5만원~50만원까지 다양하며, 면책금을 높게 설정하면 월 렌탈료가 낮아집니다. 사고 빈도가 낮은 운전자라면 면책금을 높여 '비용'을 절감할 수 있지만, 초보 운전자는 면책금이 낮은 상품을 선택하는 것이 안전합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>만기 시 인수를 할지, 반납을 할지 미리 결정해야 하나요?</h3>
+                <p>계약 시점에 '인수형' 또는 '반납형'을 선택할 수 있습니다. '인수형'은 만기 시 차량을 인수할 계획이므로, 월 렌탈료가 상대적으로 높게 책정될 수 있습니다. 반면 '반납형'은 잔존가치를 높게 잡아 월 렌탈료를 낮춥니다. 만기 시점에 인수가 아닌 반납을 선택할 경우, 별도 위약금 없이 계약을 종료할 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>장기렌트 중도 해지 시 위약금은 얼마나 되나요?</h3>
+                <p>장기렌트는 계약 기간을 채우지 못하고 중도 해지 시 큰 위약금이 발생합니다. 일반적으로 남은 렌탈료의 일정 비율(보통 20%~40%)이 위약금으로 책정됩니다. 따라서 계약 시점에 '중도 해지' 조건을 꼼꼼히 확인하고, 계약 기간을 신중하게 결정해야 합니다. 부득이하게 해지해야 할 경우, 승계자를 찾아 승계하는 것이 위약금을 줄이는 방법입니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>장기렌트 '사은품'이나 '현금지원'은 믿을 수 있나요?</h3>
+                <p>업체별 프로모션으로 제공되는 사은품이나 현금지원은 실제로 존재합니다. 하지만 이는 전체 '가격'에 포함되어 있을 수 있으므로, 총 계약 기간 동안의 '금액'을 비교해야 합니다. 일부 에이전시는 '현금지원'을 미끼로 견적을 부풀리거나, 월 렌탈료에 숨겨놓는 경우가 있으니 '내돈내산' 후기나 '전문' 업체 상담을 통해 꼼꼼히 확인해야 합니다.</p>
+            </div>
+        </div>
+
+        <!-- 맺음말 -->
+        <h2>결론: 장기렌트 업체 추천, 현명한 선택을 위한 마무리</h2>
+        <p>장기렌트 업체 추천을 통해 '최저가' 견적을 찾는 여정은 복잡할 수 있습니다. <span class="highlight">2026년 장기렌트 시장은 다양한 '할인' 프로모션과 '현금지원' 이벤트로 가득하지만, 결국 가장 중요한 것은 나에게 맞는 계약 조건을 찾는 것입니다.</span> <br>위에서 제시된 인기 모델별 '가격', '장단점', '차이점' 비교표와 '예상' 견적 계산기를 활용하여 여러 업체(롯데렌터카, SK렌터카, 현대캐피탈 등)의 견적을 비교해보세요. <br>단순히 '싼곳'을 찾기보다, '전문' 상담사와 충분한 논의를 통해 자신의 운전 습관, 재정 상황, 그리고 '신규 가입' 혜택 등을 종합적으로 고려하여 현명한 선택을 하시기 바랍니다.</p>
+
+        <!-- 외부 출처 -->
+        <div class="external-links">
+            <h2>신뢰할 수 있는 자료 출처</h2>
+            <ul>
+                <li><a href="https://www.koreacar.or.kr/" target="_blank" rel="noopener">한국자동차산업협회(KAMA) – 자동차 통계 및 시장 동향</a></li>
+                <li><a href="https://www.consumer.go.kr/main/index.do" target="_blank" rel="noopener">한국소비자원 – 자동차 대여 관련 소비자 피해 사례 및 가이드라인</a></li>
+                <li><a href="https://www.molit.go.kr/portal/main.do" target="_blank" rel="noopener">국토교통부 – 자동차 등록 통계 및 정책 자료</a></li>
+                <li><a href="https://namu.wiki/w/%EC%9E%A5%EA%B8%B0%EB%A0%8C%ED%8A%B8%EC%B9%B4" target="_blank" rel="noopener">나무위키 – 장기렌트카 항목 (개념, 장단점, 주의사항)</a></li>
+                <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 – 금융상품 및 소비자 보호 관련 정보</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript for Calculator Functionality -->
+    <script>
+        function calculateRentalCost() {
+            const carModel = document.getElementById('carModel').value;
+            const rentalPeriod = Number(document.getElementById('rentalPeriod').value);
+            const depositType = document.getElementById('depositType').value;
+            const annualMileage = document.getElementById('annualMileage').value;
+
+            let basePrice = 0; // 2026년 기준 모델별 기본 월 렌탈료 예상치 (보증금/선납금 없음, 36개월 기준)
+            let modelName = "";
+
+            switch (carModel) {
+                case 'sonata': basePrice = 45; modelName = "현대 쏘나타"; break;
+                case 'k5': basePrice = 44; modelName = "기아 K5"; break;
+                case 'grandeur': basePrice = 60; modelName = "현대 그랜저"; break;
+                case 'k8': basePrice = 62; modelName = "기아 K8"; break;
+                case 'g80': basePrice = 90; modelName = "제네시스 G80"; break;
+                case 'santafe': basePrice = 55; modelName = "현대 싼타페"; break;
+                case 'sorento': basePrice = 58; modelName = "기아 쏘렌토"; break;
+                case 'palisade': basePrice = 70; modelName = "현대 팰리세이드"; break;
+                case 'carnival': basePrice = 75; modelName = "기아 카니발"; break;
+                case 'ionic5': basePrice = 65; modelName = "현대 아이오닉 5"; break;
+                case 'ev6': basePrice = 67; modelName = "기아 EV6"; break;
+                case 'modelY': basePrice = 80; modelName = "테슬라 모델 Y"; break;
+                case 'ray': basePrice = 30; modelName = "기아 레이"; break;
+                case 'morning': basePrice = 28; modelName = "기아 모닝"; break;
+            }
+
+            // 계약 기간에 따른 할인/할증
+            if (rentalPeriod === 48) {
+                basePrice *= 0.95; // 48개월 시 약 5% 할인 효과
+            } else if (rentalPeriod === 60) {
+                basePrice *= 0.90; // 60개월 시 약 10% 할인 효과
+            }
+
+            // 보증금/선납금에 따른 추가 할인 (월 렌탈료 감소 효과)
+            if (depositType === 'deposit10' || depositType === 'prepayment10') {
+                basePrice -= basePrice * 0.05; // 10% 선납/보증금 시 약 5% 할인 효과
+            } else if (depositType === 'deposit20' || depositType === 'prepayment20') {
+                basePrice -= basePrice * 0.10; // 20% 선납/보증금 시 약 10% 할인 효과
+            }
+
+            // 주행거리에 따른 할증 (무제한은 할증이 클 수 있음)
+            if (annualMileage === '30000') {
+                basePrice += 5;
+            } else if (annualMileage === '무제한') {
+                basePrice += 10;
+            }
+
+            // 최종 예상 월 렌탈료 (만원 단위)
+            const estimatedCost = Math.round(basePrice);
+
+            document.getElementById('calcResult').innerText = `${modelName} ${rentalPeriod}개월 계약 기준 예상 월 렌탈료: 약 ${estimatedCost.toLocaleString()}만원`;
+        }
+
+        // FAQ 접기/펼치기
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const h3 = item.querySelector('h3');
+                h3.addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+  
